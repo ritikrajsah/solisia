@@ -2018,4 +2018,51 @@ footer p, footer a {
     }
 }
 
+/* Contact Form Success State Styles */
+.contact-success-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1.5rem;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.contact-success-state.show {
+    opacity: 1;
+}
+
+.contact-success-state .success-icon-wrapper {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: rgba(226, 206, 192, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.contact-success-state .success-icon-wrapper svg {
+    width: 36px;
+    height: 36px;
+}
+
+.contact-success-state h2 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--brand-brown);
+    margin: 0;
+}
+
+.contact-success-state p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0;
+}
+
 

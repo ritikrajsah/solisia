@@ -236,8 +236,32 @@ function initializeInteractions() {
                         submitButton.disabled = false;
                         submitButton.textContent = originalButtonText;
                         if (response.ok) {
-                            showToast("Thank you for trusting Solisia. Your request has been received, and we will be in touch shortly.");
+                            // Clear form fields
                             contactForm.reset();
+                            
+                            // Hide validation error states (if any are still visible)
+                            document.querySelectorAll('.error-message').forEach(el => {
+                                el.textContent = '';
+                                el.classList.remove('show');
+                            });
+                            document.querySelectorAll('.form-field').forEach(el => {
+                                el.classList.remove('invalid');
+                            });
+
+                            // Smoothly hide form and show success state
+                            contactForm.style.transition = 'opacity 0.3s ease';
+                            contactForm.style.opacity = '0';
+                            
+                            setTimeout(() => {
+                                contactForm.style.display = 'none';
+                                const successState = document.getElementById('contact-success-state');
+                                if (successState) {
+                                    successState.style.display = 'flex';
+                                    // Trigger reflow to start fade-in animation
+                                    successState.offsetHeight;
+                                    successState.classList.add('show');
+                                }
+                            }, 300);
                         } else {
                             throw new Error('Form submission failed');
                         }
@@ -252,8 +276,32 @@ function initializeInteractions() {
                     submitButton.disabled = false;
                     submitButton.textContent = originalButtonText;
                     console.log('Mock Form Submission Success (No Endpoint Configured):', data);
-                    showToast("Thank you for trusting Solisia. Your request has been received, and we will be in touch shortly.");
+                    
+                    // Clear form fields
                     contactForm.reset();
+                    
+                    // Hide validation error states
+                    document.querySelectorAll('.error-message').forEach(el => {
+                        el.textContent = '';
+                        el.classList.remove('show');
+                    });
+                    document.querySelectorAll('.form-field').forEach(el => {
+                        el.classList.remove('invalid');
+                    });
+
+                    // Smoothly hide form and show success state
+                    contactForm.style.transition = 'opacity 0.3s ease';
+                    contactForm.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        contactForm.style.display = 'none';
+                        const successState = document.getElementById('contact-success-state');
+                        if (successState) {
+                            successState.style.display = 'flex';
+                            successState.offsetHeight;
+                            successState.classList.add('show');
+                        }
+                    }, 300);
                 }
             }
         });
