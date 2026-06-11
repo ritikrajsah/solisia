@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Contact | solisia</title>
+  <meta name="description" content="Get in touch with Solisia to schedule your session. Begin your healing journey with individual or relationship counselling, emotional healing, and life guidance in a safe, confidential space.">
+  <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+</head>
+<body>
+
+  <div id="header-placeholder"></div>
+
+  <main>
+    <!-- Contact Container Section -->
+    <section class="contact-section">
+      <div class="container contact-grid">
+        <!-- Left Column: Heading and Privacy details -->
+        <div class="contact-info reveal">
+          <span class="section-tag">Contact</span>
+          <h1 class="contact-title">Begin your healing journey</h1>
+          <p class="contact-subtitle">Taking the first step can feel vulnerable. We're here to make it as comfortable and supportive as possible. Reach out today to schedule your session.</p>
+          
+          <div class="privacy-block-card">
+            <h3>Your privacy is protected</h3>
+            <p>All communication and session information is kept strictly confidential. We adhere to professional ethical guidelines and legal requirements to ensure your privacy and safety.</p>
+            <p>This is your safe space to explore, heal, and grow without judgment or fear. Your trust is sacred to us.</p>
+          </div>
+        </div>
+
+        <!-- Right Column: Booking Form -->
+        <div class="contact-form-wrapper reveal">
+          <form id="contact-booking-form" class="contact-booking-form" method="POST" name="contact" novalidate>
+            <div class="form-field">
+              <label for="contact-name">Full Name *</label>
+              <input type="text" id="contact-name" name="name" required placeholder="Enter your full name">
+              <span class="error-message" id="name-error"></span>
+            </div>
+
+            <div class="form-field">
+              <label for="contact-phone">Phone Number *</label>
+              <input type="tel" id="contact-phone" name="phone" required placeholder="Enter your phone number">
+              <span class="error-message" id="phone-error"></span>
+            </div>
+
+            <div class="form-field">
+              <label for="contact-email">Email Address *</label>
+              <input type="email" id="contact-email" name="email" required placeholder="Enter your email address">
+              <span class="error-message" id="email-error"></span>
+            </div>
+
+            <div class="form-field">
+              <label for="contact-support">What would you like support with?</label>
+              <div class="select-wrapper">
+                <select id="contact-support" name="support">
+                  <option value="" disabled selected hidden>Choose what you need support with...</option>
+                  <option value="Individual Counselling">Individual Counselling</option>
+                  <option value="Relationship Counselling">Relationship Counselling</option>
+                  <option value="Emotional Healing">Emotional Healing</option>
+                  <option value="Life Guidance">Life Guidance</option>
+                  <option value="Not Sure Yet">Not Sure Yet</option>
+                </select>
+              </div>
+              <span class="error-message" id="support-error"></span>
+            </div>
+
+            <div class="form-field">
+              <label for="contact-message">Anything you’d like to share</label>
+              <textarea id="contact-message" name="message" rows="5" placeholder="You can share more details if you’d like (optional)"></textarea>
+              <span class="error-message" id="message-error"></span>
+            </div>
+
+            <button type="submit" class="btn-submit-booking">Book a Session</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="main.js"></script>
+</body>
+</html>
