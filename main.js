@@ -270,9 +270,7 @@ function initializeInteractions() {
         const fieldsToValidate = [
             { element: nameInput, event: 'input' },
             { element: phoneInput, event: 'input' },
-            { element: emailInput, event: 'input' },
-            { element: supportSelect, event: 'change' },
-            { element: messageTextarea, event: 'input' }
+            { element: emailInput, event: 'input' }
         ];
 
         fieldsToValidate.forEach(({ element, event }) => {
