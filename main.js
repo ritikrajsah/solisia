@@ -3,10 +3,7 @@
    Fidelity: 1:1 Responsive Behavior & Dynamic Animations
 */
 
-// GLOBAL CONFIGURATION
-// Configure your contact form endpoint here (e.g. 'https://formspree.io/f/YOUR_ID' or 'https://api.web3forms.com/submit')
-// Leave it empty ('') for local mock submissions during development or local preview
-const FORM_ENDPOINT = '';
+const FORM_ENDPOINT = 'https://api.web3forms.com/submit';
 
 document.addEventListener('DOMContentLoaded', () => {
     loadComponents();
@@ -210,21 +207,16 @@ function initializeInteractions() {
                 isValid = false;
             }
 
-            // Validate Support Type
-            if (!supportSelect.value) {
-                showError('support-error', 'Please select a support type');
-                supportSelect.closest('.form-field').classList.add('invalid');
-                isValid = false;
-            }
-
-            // Validate Message
-            if (!messageTextarea.value.trim()) {
-                showError('message-error', 'Message is required');
-                messageTextarea.closest('.form-field').classList.add('invalid');
-                isValid = false;
-            }
+            // Support Type and Message are optional fields (no validation check required)
             
             if (isValid) {
+                const submitButton = contactForm.querySelector('.btn-submit-booking');
+                const originalButtonText = submitButton.textContent;
+                
+                // Disable button and show sending state
+                submitButton.disabled = true;
+                submitButton.textContent = 'Sending...';
+
                 const formData = new FormData(contactForm);
                 const data = {};
                 formData.forEach((value, key) => {
@@ -232,12 +224,6 @@ function initializeInteractions() {
                 });
 
                 if (FORM_ENDPOINT) {
-                    // Actual submission to configured API endpoint
-                    // This supports JSON formats natively (Formspree, Web3Forms, Node.js API, custom backends)
-                    // Note: If your custom PHP or Google Apps Script backend requires urlencoded format,
-                    // you can change this to:
-                    //   headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' }
-                    //   body: new URLSearchParams(formData)
                     fetch(FORM_ENDPOINT, {
                         method: 'POST',
                         headers: {
@@ -247,6 +233,8 @@ function initializeInteractions() {
                         body: JSON.stringify(data)
                     })
                     .then(response => {
+                        submitButton.disabled = false;
+                        submitButton.textContent = originalButtonText;
                         if (response.ok) {
                             showToast("Thank you for trusting Solisia. Your request has been received, and we will be in touch shortly.");
                             contactForm.reset();
@@ -255,11 +243,14 @@ function initializeInteractions() {
                         }
                     })
                     .catch(error => {
+                        submitButton.disabled = false;
+                        submitButton.textContent = originalButtonText;
                         console.error('Submission Error:', error);
                         showToast("Oops, there was an error submitting your request. Please try again.");
                     });
                 } else {
-                    // Mock local successful submission for testing when no endpoint is configured
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalButtonText;
                     console.log('Mock Form Submission Success (No Endpoint Configured):', data);
                     showToast("Thank you for trusting Solisia. Your request has been received, and we will be in touch shortly.");
                     contactForm.reset();
