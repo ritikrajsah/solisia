@@ -1,0 +1,19 @@
+{
+  "name": "solisia",
+  "version": "1.0.0",
+  "description": "Solisia - Guiding you from inner chaos to calm",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "therapy",
+    "mental-health",
+    "counseling"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vercel/analytics": "^1.4.1"
+  }
+}
