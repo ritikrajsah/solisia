@@ -2065,4 +2065,22 @@ footer p, footer a {
     margin: 0;
 }
 
+/* Stats Section Image Styling */
+.stats-image-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sanctuary-image {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    border: 1px solid var(--border-accent);
+    box-shadow: 0 4px 15px var(--shadow-soft);
+    object-fit: cover;
+    display: block;
+}
+
 
